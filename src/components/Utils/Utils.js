@@ -56,7 +56,7 @@ export const CustomStyles = {
                 borderRightStyle: 'solid',
                 borderRightWidth: '1px',
                 borderRightColor: defaultThemes.default.divider.default,
-
+                padding: '5px',
             },
         },
     },

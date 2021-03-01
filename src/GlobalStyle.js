@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   }
   pre{
     white-space: normal;
+    font-family: inherit;
   }
 `
 export default GlobalStyle;

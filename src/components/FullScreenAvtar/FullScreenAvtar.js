@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal";
 
-
 const StyledModal = Modal.styled`
   width: 100%;
   height: 100%;
@@ -23,18 +22,21 @@ const Button = styled.button`
 `;
 const Img = styled.img`
   width: 100%;
-  height: 100%;
-  position: fixed;
   left: 0px;
   top: 0px;
+  object-fit:contain;
 `;
 
 function FancyModalButton({ showModalBollean, imagePath }) {
+    const imgPlaceHolder = imagePath?.slice(0, imagePath?.indexOf(':'));
+    if (imgPlaceHolder != 'data') {
+        imagePath = imagePath?.replace(/64/g, "1920");
+    }
     const [isOpen, setIsOpen] = useState(false);
     const [opacity, setOpacity] = useState(0);
     useEffect(() => {
         if (showModalBollean) {
-            setIsOpen(true);
+            setIsOpen(!isOpen);
         }
     }, [showModalBollean, imagePath]);
 

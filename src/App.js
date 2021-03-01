@@ -1,4 +1,4 @@
-import EmployeeDetails from "./components/EmployeeDetails";
+import EmployeeDetails from "./components/EmployeeDetails/EmployeeDetails";
 import GlobalStyle from "./GlobalStyle"
 
 

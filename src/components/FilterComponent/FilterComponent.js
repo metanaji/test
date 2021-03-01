@@ -8,7 +8,7 @@ const TextField = styled.input`
   border-bottom-left-radius: 5px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #00a3e0;
   padding: 0 32px 0 16px;
   &:hover {
     cursor: pointer;
@@ -19,15 +19,15 @@ const ClearButton = styled(Button)`
   border-bottom-left-radius: 0;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  .add('Server-Side', () => <SortingServerSide />);
-        columns={columns}
-        columns={columns}
+  border-color:#00a3e0;
   height: 34px;
   width: 32px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  background:#00a3e0;
+  color:#fff;
 `;
 
 

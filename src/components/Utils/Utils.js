@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { defaultThemes } from 'react-data-table-component';
 export const ConditionalRowStyles = [
     {
@@ -40,11 +41,13 @@ export const CustomStyles = {
     },
     headCells: {
         style: {
-            '&:not(:last-of-type)': {
-                borderRightStyle: 'solid',
-                borderRightWidth: '1px',
-                borderRightColor: defaultThemes.default.divider.default,
-            },
+            borderRightStyle: 'solid',
+            borderRightWidth: '1px',
+            borderRightColor: defaultThemes.default.divider.default,
+            fontWeight: 'bold',
+            background: '#43b02a',
+            color: '#fff',
+            border: '1px solid 0,0,0,.12',
         },
     },
     cells: {
@@ -58,3 +61,32 @@ export const CustomStyles = {
         },
     },
 };
+
+export const Button = styled.button`
+  font-size: 1em;
+  text-align: center;
+  color: #fff;
+  background:#f2a900;
+  border:1px solid #f2a900;
+  padding:.3rem;
+`;
+export const FormControl = styled.input`
+  font-size: 1em;
+  text-align: left;
+  color: #003865;
+  border:1px solid #f2a900;
+  padding:.3rem;
+  @media (max-width: 778px) {
+    width:60%;
+  } 
+`;
+export const Select = styled.select`
+  font-size: 1em;
+  text-align: left;
+  color: #003865;
+  border:1px solid #f2a900;
+  padding:.3rem;
+  @media (max-width: 778px) {
+    width:30px;
+  } 
+`;

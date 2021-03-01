@@ -1,23 +1,17 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import DataTable, { defaultThemes } from 'react-data-table-component';
+import DataTable from 'react-data-table-component';
 import ReactMarkdown from 'react-markdown';
-import styled from 'styled-components';
 import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
 import FullScreenAvtar from "./FullScreenAvtar/FullScreenAvtar";
 import FilterComponent from "./FilterComponent/FilterComponent";
-import { ConditionalRowStyles, CustomStyles } from "./Utils/Utils"
+import { ConditionalRowStyles, CustomStyles, Button, FormControl, Select } from "./Utils/Utils"
 import { config, URL } from "../API/ApiConfig";
 import ErrorPage from "./ErrorPage/ErrorPage";
 import createPersistedState from 'use-persisted-state';
 const useCounterState = createPersistedState('persistedTableData');
-const Button = styled.button`
-font-size: 1em;
-text-align: center;
-color: #003865;
-`;
+
 
 function EmployeeDetails() {
 
@@ -67,9 +61,9 @@ function EmployeeDetails() {
       name: 'Avatar',
       selector: 'avatar',
       grow: 0,
-      cell: row => { if (row.avatar == "http://httpstat.us/503" || row.avatar == "0") { return "Avatar Not Available" } else { return <img height="84px" onClick={() => showFullAvtar(row)} width="56px" alt={row.name} src={row.avatar} /> } },
+      width: '13%',
+      cell: row => { if (row.avatar === "http://httpstat.us/503" || row.avatar === "0") { return "Avatar Not Available" } else { return <img height="84px" onClick={() => showFullAvtar(row)} width="56px" alt={row.name} src={row.avatar} /> } },
     },
-    ,
     {
       name: 'Name',
       selector: 'name',
@@ -80,7 +74,7 @@ function EmployeeDetails() {
       name: 'Bio',
       selector: 'bio',
       sortable: false,
-      width: '40%',
+      width: '37%',
       grow: 0,
       cell: row => <ReactMarkdown escapeHtml={false} source={row.bio} />,
     },
@@ -94,10 +88,13 @@ function EmployeeDetails() {
       name: 'Choose Color',
       grow: 0,
       width: '10%',
-      cell: row => <select name={row.uuid} id={row.uuid} onChange={(e) => { setSelectedRow(row); setColor(e.target.value) }} value={row.color}><option value="">Select Color</option><option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option></select>
+      last: true,
+      cell: row => <Select name={row.uuid} id={row.uuid} onChange={(e) => { setSelectedRow(row); setColor(e.target.value) }} value={row.color}><option value="">Select Color</option><option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option></Select>
     },
     {
       name: 'Add Label',
+      selector: 'name',
+      sortable: false,
       grow: 0,
       width: '20%',
       cell: row => <form id={row.uuid} onSubmit={(e) => handleAdd(e, row)}>
@@ -143,7 +140,7 @@ function EmployeeDetails() {
           setError(true);
         })
     }
-  }, [])
+  }, [persistedTableData])
 
   return (
     <>
@@ -156,7 +153,7 @@ function EmployeeDetails() {
             pagination
             customStyles={CustomStyles}
             data={filteredItems}
-            paginationTotalRows={100}
+            paginationTotalRows={1000}
             paginationPerPage={20}
             conditionalRowStyles={ConditionalRowStyles}
             paginationResetDefaultPage={resetPaginationToggle}

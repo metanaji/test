@@ -22,8 +22,11 @@ const Button = styled.button`
   bottom:30px;
 `;
 const Img = styled.img`
-position: relative;
-width: 100vw;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
 `;
 
 function FancyModalButton({ showModalBollean, imagePath }) {
@@ -31,9 +34,8 @@ function FancyModalButton({ showModalBollean, imagePath }) {
     const [opacity, setOpacity] = useState(0);
     useEffect(() => {
         if (showModalBollean) {
-            setIsOpen(!isOpen);
+            setIsOpen(true);
         }
-
     }, [showModalBollean, imagePath]);
 
 
@@ -83,8 +85,6 @@ function FullScreenAvtar({ showModalBollean, imagePath }) {
             <FancyModalButton showModalBollean={showModalBollean} imagePath={imagePath} />
         </ModalProvider>
     );
-
-
 };
 
 export default FullScreenAvtar; 
